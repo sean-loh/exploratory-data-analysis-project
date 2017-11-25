@@ -4,7 +4,7 @@ source('common.R')
 initZippedData(DATA_URL, ZIP_FILE, DATA_FILE)
 
 gapData <- read.table(DATA_FILE, sep=";", header=TRUE, na.strings="?",
-    colClasses=c('character', 'character', 'numeric', rep(NULL, 6)))
+    colClasses=c('character', 'character', 'numeric', rep('NULL', 6)))
 
 # Subset by dates
 gapData <- subsetByDates(gapData, START_DATE, END_DATE)
