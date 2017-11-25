@@ -9,7 +9,9 @@ gapData <- read.table(DATA_FILE, sep=";", header=TRUE, na.strings="?",
 # Subset by dates
 gapData <- subsetByDates(gapData, START_DATE, END_DATE)
 
-# Make histogram
-hist(gapData$Global_active_power, col='red',
-    main="Global Active Power",
-    xlab="Global Active Power (kilowatts)")
+# Create a Date/Time column
+gapData$datetime <- as.POSIXct(paste(gapData$Date, gapData$Time), tz="UCT")
+
+# Make plot
+plot(gapData$datetime, gapData$Global_active_power,
+    type='l', xlab="", ylab="Global Active Power (kilowatts)")
