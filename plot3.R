@@ -1,5 +1,8 @@
 source('common.R')
 
+# Setup png plot device
+setPlotDevice("plot3.png")
+
 # Sub metering column names
 smCols = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3")
 
@@ -23,3 +26,6 @@ lines(gapData$datetime, gapData$Sub_metering_2, col='red')
 lines(gapData$datetime, gapData$Sub_metering_3, col='blue')
 legend('topright', legend=smCols,
     lty=c(1,1), col=c("black", "red", "blue"))
+
+# Close png plot device
+dev.off()

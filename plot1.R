@@ -1,5 +1,8 @@
 source('common.R')
 
+# Setup png plot device
+setPlotDevice("plot1.png")
+
 # Download and unzip data file if it's not already here
 initZippedData(DATA_URL, ZIP_FILE, DATA_FILE)
 
@@ -13,3 +16,6 @@ gapData <- subsetByDates(gapData, START_DATE, END_DATE)
 hist(gapData$Global_active_power, col='red',
     main="Global Active Power",
     xlab="Global Active Power (kilowatts)")
+
+# Close png plot device
+dev.off()

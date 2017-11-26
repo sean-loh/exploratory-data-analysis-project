@@ -1,5 +1,8 @@
 source('common.R')
 
+# Setup png plot device
+setPlotDevice("plot4.png")
+
 # Download and unzip data file if it's not already here
 initZippedData(DATA_URL, ZIP_FILE, DATA_FILE)
 
@@ -25,7 +28,6 @@ plot(gapData$datetime, gapData$Voltage, type='l',
     xlab="datetime", ylab="Voltage")
 
 # Bottom-left
-# Sub metering column names
 smCols = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3")
 plot(gapData$datetime, gapData$Sub_metering_1, type='l',
     xlab="", ylab='Energy sub metering')
@@ -37,3 +39,6 @@ legend('topright', legend=smCols, bty='n',
 # Bottom-right
 plot(gapData$datetime, gapData$Global_reactive_power, type='l',
     xlab="datetime", ylab="Global_reactive_power")
+
+# Close png plot device
+dev.off()
